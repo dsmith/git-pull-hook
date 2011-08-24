@@ -5,12 +5,16 @@ log.level = Logger::DEBUG
 
 def pull(repo)
   name = repo['repository']['name']
+  log.warn 'updating repo #{name}'
   `cd ${name} && git pull origin master`
 end
 
 post '/pull' do
   begin
-    pull(JSON.parse(params[:payload]))
+    repo = JSON.parse(params[:payload])
+    name = repo['repository']['name']
+    log.warn "updating repo #{name}"
+    `cd #{name} && git pull origin master`
     "ok"
   rescue Exception => e
     log.error e
