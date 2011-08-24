@@ -1,8 +1,8 @@
 %w{rubygems sinatra json yaml}.each{|x| require x}
 
-config =  YAML::load_file("/etc/git-pull-hook/repos.yml")
 
 def get_local_path(remote)
+  config =  YAML::load_file("/etc/git-pull-hook/repos.yml")
   config['repo_home'] + config['repos'][remote]
 end
 
