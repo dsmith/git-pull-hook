@@ -1,1 +1,1 @@
-sudo node -u ruby run.rb $@
+sudo -u node ruby run.rb $@
