@@ -16,7 +16,7 @@ end
 
 # GET /remote-repo used for debugging
 get '/:remote' do
-  remote_repo = push['repository']['name']
+  remote_repo = params[:remote]
   local_repo = get_local_path(remote_repo)
   `cd #{local_repo} && git pull origin master`
 end
