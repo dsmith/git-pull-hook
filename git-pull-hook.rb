@@ -3,18 +3,13 @@
 log = Logger.new('/home/node/git-pull-hook.log')
 log.level = Logger::DEBUG
 
-def pull(repo)
-  name = repo['repository']['name']
-  log.warn 'updating repo #{name}'
-  `cd ${name} && git pull origin master`
-end
-
+home = '/home/node'
 post '/pull' do
   begin
     repo = JSON.parse(params[:payload])
     name = repo['repository']['name']
-    log.warn "updating repo #{name}"
-    `cd #{name} && git pull origin master`
+    log.warn "updating repo #{home}/#{name}"
+    `cd #{home}/#{name} && git pull origin master`
     "ok"
   rescue Exception => e
     log.error e
