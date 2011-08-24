@@ -1,3 +1,4 @@
 repo_home: '~/repos'
 repos:
     remote.git: 'local.git'
+    botjs-test.git: 'botjs-test'
