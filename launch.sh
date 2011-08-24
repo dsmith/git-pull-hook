@@ -1,1 +1,1 @@
-ruby ruby.rb $@
+ruby run.rb $@
