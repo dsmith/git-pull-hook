@@ -1,6 +1,7 @@
 %w{rubygems sinatra json yaml}.each{|x| require x}
 
-config =  YAML::load_file('repos.yml')
+pwd = File.dirname(File.expand_path(__FILE__))
+config =  YAML::load_file("#{pwd}/repos.yml")
 
 def get_local_path(remote)
   config['repo_home'] + config['repos'][remote]
